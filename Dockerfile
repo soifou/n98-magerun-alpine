@@ -11,14 +11,11 @@ RUN apk add --no-cache --repository "http://dl-cdn.alpinelinux.org/alpine/edge/t
     php7-dom \
     php7-iconv \
     php7-json \
-    php7-mbstring \
-    php7-mysqli \
-    php7-openssl \
     php7-pdo \
     php7-pdo_mysql \
     php7-phar \
-    php7-zlib \
-    zip
+    php7-posix \
+    php7-zlib
 
 RUN ln -s /etc/php7 /etc/php && \
     ln -s /usr/bin/php7 /usr/bin/php && \

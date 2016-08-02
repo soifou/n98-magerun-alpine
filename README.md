@@ -12,7 +12,7 @@ function n98() {
         -v $MAGENTO_DIR:/mnt \
         -u `id -u`:`id -g` \
         --net=$DOCKER_NETWORK_NAME \
-        soifou/n98-magerun-alpine n98-magerun --skip-root-check --root-dir=/mnt ${@:1}
+        soifou/n98-magerun-alpine ${@:1}
 }
 ```
 **NOTE**: We mount here the volume of the current host directory (`-v` argument) and fill the current docker network (`--net` argument) where your current running containers are in (database, php, ...).

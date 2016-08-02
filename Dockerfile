@@ -27,3 +27,5 @@ RUN mkdir /usr/local/share/php && cd /usr/local/share/php && \
     wget https://files.magerun.net/n98-magerun.phar && \
     chmod +x n98-magerun.phar && \
     ln -s /usr/local/share/php/n98-magerun.phar /usr/local/bin/n98-magerun
+
+ENTRYPOINT ["n98-magerun", "--skip-root-check", "--root-dir=/mnt"]

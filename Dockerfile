@@ -5,23 +5,19 @@ RUN apk add --no-cache --repository "http://dl-cdn.alpinelinux.org/alpine/edge/t
     wget \
     less \
     mysql-client \
-    php7 \
-    php7-ctype \
-    php7-curl \
-    php7-dom \
-    php7-iconv \
-    php7-json \
-    php7-pdo \
-    php7-pdo_mysql \
-    php7-phar \
-    php7-posix \
-    php7-zlib
+    php5-cli \
+    php5-ctype \
+    php5-curl \
+    php5-dom \
+    php5-iconv \
+    php5-json \
+    php5-pdo \
+    php5-pdo_mysql \
+    php5-phar \
+    php5-posix \
+    php5-zlib
 
-RUN ln -s /etc/php7 /etc/php && \
-    ln -s /usr/bin/php7 /usr/bin/php && \
-    ln -s /usr/lib/php7 /usr/lib/php
-
-COPY rootfs/ /
+COPY php.ini /etc/php
 
 RUN mkdir /usr/local/share/php && cd /usr/local/share/php && \
     wget https://files.magerun.net/n98-magerun.phar && \

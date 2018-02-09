@@ -1,23 +1,23 @@
-FROM alpine:edge
-MAINTAINER François Fleur <fleur.fr@gmail.com>
+FROM php:5.6-alpine
 
-RUN apk add --no-cache --repository "http://dl-cdn.alpinelinux.org/alpine/edge/testing" \
-    wget \
-    less \
-    mysql-client \
-    php5-cli \
-    php5-ctype \
-    php5-curl \
-    php5-dom \
-    php5-iconv \
-    php5-json \
-    php5-pdo \
-    php5-pdo_mysql \
-    php5-phar \
-    php5-posix \
-    php5-zlib
+RUN apk upgrade -U && \
+    apk add --no-cache --repository "http://dl-cdn.alpinelinux.org/alpine/edge/testing" \
+        wget less \
+        zlib-dev \
+        mysql-client && \
+    docker-php-ext-install \
+        ctype \
+        iconv \
+        json \
+        mbstring \
+        mysqli \
+        pdo \
+        pdo_mysql \
+        posix \
+        zip && \
+    rm -fr /var/cache/apk/*
 
-COPY php.ini /etc/php
+COPY php.ini /usr/local/etc/php/conf.d/50-setting.ini
 
 RUN mkdir /usr/local/share/php && cd /usr/local/share/php && \
     wget https://files.magerun.net/n98-magerun.phar && \
